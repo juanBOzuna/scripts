@@ -1,3 +1,4 @@
+// Ahora puedes acceder a la configuración global
 function calcularComision(valor) {
     if (valor >= 10000 && valor <= 99999) return 1000;
     if (valor >= 100000 && valor <= 300099) return 2000;
@@ -8,6 +9,14 @@ function calcularComision(valor) {
 }
 
 function procesarTabla() {
+    // Asegurarse de que el objeto de configuración esté disponible
+    if (!window.config) {
+        console.log("❌ Configuración no disponible");
+        return;
+    }
+
+    const { idTransaccionOrigen, idTransaccionFin } = window.config;  // Leer las variables desde la configuración
+
     const tabla = document.querySelector('.adaptable-table');
     if (!tabla) return;
 
@@ -30,7 +39,7 @@ function procesarTabla() {
         const idTransaccion = celdas[0].textContent.trim();  // Asumiendo que la columna 0 tiene el Id. Transacción
 
         // Comienza a procesar solo cuando encuentra el Id de transacción de origen
-        if (idTransaccion === window.idTransaccionOrigen) {
+        if (idTransaccion === idTransaccionOrigen) {
             procesar = true;
         }
 
@@ -50,7 +59,7 @@ function procesarTabla() {
         }
 
         // Detiene el procesamiento cuando encuentra el Id de transacción de fin
-        if (idTransaccion === window.idTransaccionFin) {
+        if (idTransaccion === idTransaccionFin) {
             procesar = false;
         }
     });
