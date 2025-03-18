@@ -9,11 +9,9 @@ function calcularComision(valor) {
 }
 
 function procesarTabla() {
-    // Leer las variables desde localStorage
     const idTransaccionOrigen = localStorage.getItem('idTransaccionOrigen');
     const idTransaccionFin = localStorage.getItem('idTransaccionFin');
     
-    // Verificamos que las variables estén en el localStorage
     if (!idTransaccionOrigen || !idTransaccionFin) {
         console.log("❌ Las variables idTransaccionOrigen o idTransaccionFin no están en el localStorage.");
         return;
@@ -29,7 +27,7 @@ function procesarTabla() {
     }
 
     let totalComisiones = 0;
-    let procesar = false;  // Controla si se debe empezar a procesar
+    let procesar = false;
 
     cuerpoTabla.querySelectorAll('tr.ng-scope').forEach(fila => {
         const celdas = fila.querySelectorAll('td.ng-binding');
@@ -38,9 +36,8 @@ function procesarTabla() {
         const tipo = celdas[2].textContent.trim();
         const valor = parseFloat(celdas[3].textContent.replace(/[^\d.]/g, '')) || 0;
         const estado = celdas[4].textContent.trim().toUpperCase();
-        const idTransaccion = celdas[0].textContent.trim();  // Asumiendo que la columna 0 tiene el Id. Transacción
+        const idTransaccion = celdas[0].textContent.trim(); 
 
-        // Comienza a procesar solo cuando encuentra el Id de transacción de origen
         if (idTransaccion === idTransaccionOrigen) {
             procesar = true;
         }
