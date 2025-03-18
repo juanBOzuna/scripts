@@ -1,4 +1,3 @@
-// Ahora puedes acceder a la configuración global
 function calcularComision(valor) {
     if (valor >= 10000 && valor <= 99999) return 1000;
     if (valor >= 100000 && valor <= 300099) return 2000;
@@ -9,13 +8,15 @@ function calcularComision(valor) {
 }
 
 function procesarTabla() {
-    // Asegurarse de que el objeto de configuración esté disponible
-    if (!window.config) {
-        console.log("❌ Configuración no disponible");
+    // Leer las variables desde localStorage
+    const idTransaccionOrigen = localStorage.getItem('idTransaccionOrigen');
+    const idTransaccionFin = localStorage.getItem('idTransaccionFin');
+    
+    // Verificamos que las variables estén en el localStorage
+    if (!idTransaccionOrigen || !idTransaccionFin) {
+        console.log("❌ Las variables idTransaccionOrigen o idTransaccionFin no están en el localStorage.");
         return;
     }
-
-    const { idTransaccionOrigen, idTransaccionFin } = window.config;  // Leer las variables desde la configuración
 
     const tabla = document.querySelector('.adaptable-table');
     if (!tabla) return;
