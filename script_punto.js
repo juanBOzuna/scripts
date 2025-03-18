@@ -1,4 +1,3 @@
-
 function calcularComision(valor) {
     if (valor >= 10000 && valor <= 99999) return 1000;
     if (valor >= 100000 && valor <= 300099) return 2000;
@@ -7,6 +6,7 @@ function calcularComision(valor) {
     if (valor >= 701000 && valor <= 800000) return 5000;
     return 0;
 }
+
 function procesarTabla() {
     const tabla = document.querySelector('.adaptable-table');
     if (!tabla) return;
@@ -18,8 +18,6 @@ function procesarTabla() {
     }
 
     let totalComisiones = 0;
-    
-  
     let procesar = false;  // Controla si se debe empezar a procesar
 
     cuerpoTabla.querySelectorAll('tr.ng-scope').forEach(fila => {
@@ -32,7 +30,7 @@ function procesarTabla() {
         const idTransaccion = celdas[0].textContent.trim();  // Asumiendo que la columna 0 tiene el Id. Transacción
 
         // Comienza a procesar solo cuando encuentra el Id de transacción de origen
-        if (idTransaccion === idTransaccionOrigen) {
+        if (idTransaccion === window.idTransaccionOrigen) {
             procesar = true;
         }
 
@@ -52,7 +50,7 @@ function procesarTabla() {
         }
 
         // Detiene el procesamiento cuando encuentra el Id de transacción de fin
-        if (idTransaccion === idTransaccionFin) {
+        if (idTransaccion === window.idTransaccionFin) {
             procesar = false;
         }
     });
