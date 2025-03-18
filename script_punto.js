@@ -1,3 +1,6 @@
+alert('si');
+alert(localStorage.getItem('idTransaccionOrigen'));
+
 function calcularComision(valor) {
     if (valor >= 10000 && valor <= 99999) return 1000;
     if (valor >= 100000 && valor <= 300099) return 2000;
