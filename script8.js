@@ -56,6 +56,7 @@ function actualizarBotonesFila(fila, esInicio) {
         } else {
             localStorage.setItem('idTransaccionFin', idTransaccion);
             boton.remove();
+            procesarTabla();
         }
     });
 
@@ -132,8 +133,3 @@ function procesarTabla() {
 }
 
 procesarTabla();
-
-new MutationObserver(() => procesarTabla()).observe(document.querySelector('.adaptable-table tbody'), {
-    childList: true,
-    subtree: true
-});
