@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" UseFileCache="true" ReportInfo.Created="07/29/2014 10:08:53" ReportInfo.Modified="07/04/2017 21:57:42" ReportInfo.CreatorVersion="2016.4.30.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+    private void Page1_StartPage(object sender, EventArgs e)
+    {   
+      string ruta     = (String)Report.GetParameterValue(&quot;ruta&quot;);
+      string pathLogo = (String)Report.GetColumnValue(&quot;Prestador.imagen&quot;);
+      string RutaCarpeta = (String)Report.GetParameterValue(&quot;RutaCarpeta&quot;);
+      pathLogo   = RutaCarpeta+&quot;/Imagenes/&quot;+pathLogo;     
+      //ImgLogo.ImageLocation = pathLogo;
+       
+    }                             
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqkRkFtHZruRDRUSPCSpgPieOHEgWc6wCeQPNmrZcw5XkN0soWKZ7WIkDZMxQ4TpfgtOXtDjDxiaKFSfTHe51MlHjw3UAPOC6rdeQgpBxbGoKikPPtoXVoe08eL2I0fhsEdTLXknPMhwCL6qnu8X8O6iu2/DXYw9RxxNsMLgSoet6vvwigvF0wOLmxnizSjncXJLyth7EvWG/GDAtITw8VqA==">
+      <TableDataSource Name="Table3" Alias="Prestador" DataType="System.Int32" Enabled="true" TableName="Table3" SelectCommand="select * from seriales where id = @id_sede">
+        <Column Name="nit" DataType="System.String"/>
+        <Column Name="tipoid" DataType="System.String"/>
+        <Column Name="r_social" DataType="System.String"/>
+        <Column Name="codigo_eps" DataType="System.String"/>
+        <Column Name="repre_lega" DataType="System.String"/>
+        <Column Name="direccion" DataType="System.String"/>
+        <Column Name="ciudad" DataType="System.String"/>
+        <Column Name="web" DataType="System.String"/>
+        <Column Name="e_mail" DataType="System.String"/>
+        <Column Name="aa" DataType="System.String"/>
+        <Column Name="telefono" DataType="System.String"/>
+        <Column Name="serial_aut" DataType="System.String"/>
+        <Column Name="depto" DataType="System.String"/>
+        <Column Name="fecha" DataType="System.DateTime"/>
+        <Column Name="rutwin" DataType="System.String"/>
+        <Column Name="coment" DataType="System.String"/>
+        <Column Name="resolucion" DataType="System.String"/>
+        <Column Name="interfazconta" DataType="System.Int32"/>
+        <Column Name="mime" DataType="System.String"/>
+        <Column Name="enlace" DataType="System.Int32"/>
+        <Column Name="porcentaje" DataType="System.Int32"/>
+        <Column Name="factura_medico" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="num_lic" DataType="System.String"/>
+        <Column Name="prefijo_fac" DataType="System.String"/>
+        <Column Name="serialact" DataType="System.String"/>
+        <Column Name="codactiva" DataType="System.String"/>
+        <Column Name="serialnoact" DataType="System.String"/>
+        <Column Name="cons_factura" DataType="System.Int32"/>
+        <Column Name="factura_venta_publico" DataType="System.Int32"/>
+        <Column Name="imagen" DataType="System.String"/>
+        <Column Name="id" DataType="System.Int32"/>
+        <Column Name="logo" DataType="System.Byte[]" BindableControl="Picture"/>
+        <Column Name="firma_repre" DataType="System.String"/>
+        <Column Name="fuente_contable" DataType="System.String"/>
+        <Column Name="serie_contable" DataType="System.String"/>
+        <Column Name="descripcion_fuente_contable" DataType="System.String"/>
+        <Column Name="longitud_nro_factura" DataType="System.Int32"/>
+        <CommandParameter Name="id_sede" Expression="[id_sede]" DefaultValue="1"/>
+      </TableDataSource>
+      <TableDataSource Name="Table4" Alias="spRptCostos_PrefijoServicioDetalle" DataType="System.Int32" Enabled="true" SelectCommand="SELECT max(prefijo) AS Prefijo, CodigoItem,MAX(detalleitem) AS DetalleItem,sum(cantidaditem) as Cantidad,sum(cantidaditem*valorunitario)/sum(cantidaditem) as ValorUnitario,sum(cantidaditem*valorunitario) as Total&#13;&#10;FROM Table_DetalladoxConceptos&#13;&#10;GROUP BY CodigoItem">
+        <Column Name="Prefijo" DataType="System.String"/>
+        <Column Name="CodigoItem" DataType="System.String"/>
+        <Column Name="DetalleItem" DataType="System.String"/>
+        <Column Name="ValorUnitario" DataType="System.Int32"/>
+        <Column Name="Cantidad" DataType="System.Int32"/>
+        <Column Name="Total" DataType="System.Int32"/>
+      </TableDataSource>
+      <TableDataSource Name="Table" Alias="Medico" DataType="System.Int32" Enabled="true" SelectCommand="Select nombre From sis_medi Where codigo = @Medico">
+        <Column Name="nombre" DataType="System.String"/>
+        <CommandParameter Name="@Medico" DataType="8" Expression="[medico]" DefaultValue="0"/>
+      </TableDataSource>
+      <TableDataSource Name="Table1" Alias="Especialidad" DataType="System.Int32" Enabled="true" SelectCommand="Select nombre From sis_especialidades Where id = @Especialidad">
+        <Column Name="nombre" DataType="System.String"/>
+        <CommandParameter Name="@Especialidad" DataType="8" Expression="[especialidad]" DefaultValue="0"/>
+      </TableDataSource>
+      <TableDataSource Name="Table2" Alias="PrefijoServicio" DataType="System.Int32" Enabled="true" SelectCommand="Select Nombre From Prefijos Where Id = @PrefijoServicio">
+        <Column Name="Nombre" DataType="System.String"/>
+        <CommandParameter Name="@PrefijoServicio" DataType="8" Expression="[prefijo]" DefaultValue="0"/>
+      </TableDataSource>
+      <TableDataSource Name="Table5" Alias="PuntoAtencion" DataType="System.Int32" Enabled="true" SelectCommand="SELECT Codigo + ' - ' + Nombre Nombre FROM puntoAtencion WHERE id = @PuntoAtencion">
+        <Column Name="Nombre" DataType="System.String"/>
+        <CommandParameter Name="@PuntoAtencion" DataType="8" Expression="[PuntoAtencion]" DefaultValue="0"/>
+      </TableDataSource>
+      <TableDataSource Name="Table6" Alias="Eps" DataType="System.Int32" Enabled="true" SelectCommand="SELECT nombre FROM sis_empre WHERE codigo = @Codigo">
+        <Column Name="nombre" DataType="System.String"/>
+        <CommandParameter Name="@Codigo" DataType="22" Expression="[Eps]"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+    <Parameter Name="ruta" DataType="System.String"/>
+    <Parameter Name="RutaCarpeta" DataType="System.String"/>
+    <Parameter Name="fecha_final" DataType="System.DateTime"/>
+    <Parameter Name="fecha_inicial" DataType="System.DateTime"/>
+    <Parameter Name="id_sede" DataType="System.Int16"/>
+    <Parameter Name="medico" DataType="System.Int64"/>
+    <Parameter Name="concepto" DataType="System.String"/>
+    <Parameter Name="tipoIngreso" DataType="System.String"/>
+    <Parameter Name="especialidad" DataType="System.Int64"/>
+    <Parameter Name="prefijo" DataType="System.Int64"/>
+    <Parameter Name="PuntoAtencion" DataType="System.String"/>
+    <Parameter Name="Eps" DataType="System.String"/>
+    <Total Name="TotalCantidades" Expression="[spRptCostos_PrefijoServicioDetalle.Cantidad]" Evaluator="Data1"/>
+    <Total Name="TotalUnitarios" Expression="[spRptCostos_PrefijoServicioDetalle.ValorUnitario]" Evaluator="Data1"/>
+    <Total Name="Totales" Expression="[spRptCostos_PrefijoServicioDetalle.Total]" Evaluator="Data1"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="279.4" PaperHeight="215.9" RawPaperSize="1" FirstPageSource="15" OtherPagesSource="15" StartPageEvent="Page1_StartPage">
+    <PageHeaderBand Name="PageHeader1" Width="980.53" Height="151.2">
+      <TextObject Name="Text20" Top="113.4" Width="66.15" Height="18.9" CanGrow="true" CanBreak="false" Text="TIPO ING.:" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text57" Left="66.15" Top="113.4" Width="510.3" Height="18.9" CanGrow="true" CanBreak="false" Text="[IIf([tipoIngreso] == &quot;&quot;,&quot;TODOS&quot;,[tipoIngreso])]" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text62" Left="576.45" Top="113.4" Width="94.5" Height="18.9" Text="P. ATENCIÓN:" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text63" Left="670.95" Top="113.4" Width="311.85" Height="18.9" CanGrow="true" CanBreak="false" Text="[IIf( [PuntoAtencion.Nombre]== &quot;&quot;,&quot;TODOS&quot;,[PuntoAtencion.Nombre])]" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text64" Top="132.3" Width="66.15" Height="18.9" Text="EPS PCTE:" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text65" Left="66.15" Top="132.3" Width="510.3" Height="18.9" CanGrow="true" CanBreak="false" Text="[IIf([Eps.nombre] == &quot;&quot;,&quot;TODAS&quot;,[Eps.nombre])]" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text56" Top="94.5" Width="66.15" Height="18.9" CanGrow="true" CanBreak="false" Text="PREFIJO:" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text17" Left="576.45" Top="94.5" Width="94.5" Height="18.9" CanGrow="true" CanBreak="false" Text="CPTO. PREFIJO:" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text18" Left="66.15" Top="94.5" Width="510.3" Height="18.9" CanGrow="true" CanBreak="false" Text="[IIf([PrefijoServicio.Nombre] == &quot;&quot;,&quot;TODOS&quot;,[PrefijoServicio.Nombre])]" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text19" Left="670.95" Top="94.5" Width="311.85" Height="18.9" CanGrow="true" CanBreak="false" Text="[IIf([concepto] == &quot;&quot;,&quot;TODOS&quot;,[concepto])]" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text15" Top="75.6" Width="66.15" Height="18.9" CanGrow="true" CanBreak="false" Text="MEDICO:" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text16" Left="66.15" Top="75.6" Width="510.3" Height="18.9" CanGrow="true" CanBreak="false" Text="[IIf([Medico.nombre] == &quot;&quot;,&quot;TODOS&quot;,[Medico.nombre])]" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text54" Left="576.45" Top="75.6" Width="94.5" Height="18.9" CanGrow="true" CanBreak="false" Text="ESPECIALIDAD:" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text55" Left="670.95" Top="75.6" Width="311.85" Height="18.9" CanGrow="true" CanBreak="false" Text="[IIf([Especialidad.nombre] == &quot;&quot;,&quot;TODAS&quot;,[Especialidad.nombre])]" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text38" Top="56.7" Width="576.45" Height="18.9" Border.Lines="Left, Top, Bottom" Border.Style="Dash" Fill.Color="WhiteSmoke" Text="Fecha Inicial: [fecha_inicial]" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text39" Left="576.45" Top="56.7" Width="406.35" Height="18.9" Border.Lines="Right, Top, Bottom" Border.Style="Dash" Fill.Color="WhiteSmoke" Text="Fecha Final: [fecha_final]" HorzAlign="Right" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text7" Top="37.8" Width="982.8" Height="18.9" Text="DETALLADO POR PREFIJO E ITEMS" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text4" Top="18.9" Width="66.15" Height="18.9" Text="Nit:" Font="Arial, 9pt, style=Italic"/>
+      <TextObject Name="Text27" Left="66.15" Top="18.9" Width="396.9" Height="18.9" Text="[Prestador.nit]" Font="Arial, 9pt, style=Italic"/>
+      <TextObject Name="Text32" Left="727.65" Top="18.9" Width="151.2" Height="18.9" Text="Fecha Impresion:" Font="Arial, 9pt, style=Italic"/>
+      <TextObject Name="Text33" Left="878.85" Top="18.9" Width="103.95" Height="18.9" Text="[Date]" Format="Date" Format.Format="MM/dd/yyyy" AutoWidth="true" Font="Arial, 9pt, style=Italic"/>
+      <TextObject Name="Text2" Width="670.95" Height="18.9" Text="[Prestador.r_social]" AutoWidth="true" Font="Arial, 10pt, style=Bold, Italic"/>
+      <TextObject Name="Text1" Left="670.95" Width="311.85" Height="18.9" CanBreak="false" Text="Codigo del prestador: [Prestador.codigo_eps]" Font="Arial, 9pt, style=Italic"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="178.1" Width="980.53" Height="18.9" CanGrow="true" CanBreak="true" DataSource="Table4" KeepTogether="true">
+      <TextObject Name="Text3" Width="217.35" Height="18.9" CanGrow="true" GrowToBottom="true" Text="[spRptCostos_PrefijoServicioDetalle.Prefijo]" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text5" Left="217.35" Width="85.05" Height="18.9" CanGrow="true" GrowToBottom="true" Text="[spRptCostos_PrefijoServicioDetalle.CodigoItem]" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text6" Left="302.4" Width="387.45" Height="18.9" CanGrow="true" GrowToBottom="true" Text="[spRptCostos_PrefijoServicioDetalle.DetalleItem]" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text8" Left="689.85" Width="56.7" Height="18.9" CanGrow="true" GrowToBottom="true" Text="[spRptCostos_PrefijoServicioDetalle.Cantidad]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text9" Left="746.55" Width="103.95" Height="18.9" CanGrow="true" GrowToBottom="true" Text="[spRptCostos_PrefijoServicioDetalle.ValorUnitario]" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="," Format.GroupSeparator="." Format.CurrencySymbol="$" Format.PositivePattern="2" Format.NegativePattern="12" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text10" Left="850.5" Width="132.3" Height="18.9" CanGrow="true" GrowToBottom="true" Text="[spRptCostos_PrefijoServicioDetalle.Total]" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="," Format.GroupSeparator="." Format.CurrencySymbol="$" Format.PositivePattern="2" Format.NegativePattern="12" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt"/>
+      <DataHeaderBand Name="DataHeader1" Top="155.2" Width="980.53" Height="18.9" RepeatOnEveryPage="true">
+        <TextObject Name="Text11" Left="-2" Width="217.35" Height="18.9" Border.Lines="All" Fill.Color="LightGray" Text="PREFIJO" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+        <TextObject Name="Text42" Left="215.35" Width="85.05" Height="18.9" Border.Lines="All" Fill.Color="LightGray" Text="COD. ITEM" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+        <TextObject Name="Text44" Left="300.4" Width="387.45" Height="18.9" Border.Lines="All" Fill.Color="LightGray" Text="ITEM" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+        <TextObject Name="Text45" Left="687.85" Width="56.7" Height="18.9" Border.Lines="All" Fill.Color="LightGray" Text="CANT." HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+        <TextObject Name="Text46" Left="744.55" Width="103.95" Height="18.9" Border.Lines="All" Fill.Color="LightGray" Text="VALOR UNIT." HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+        <TextObject Name="Text12" Left="847.38" Width="132.3" Height="18.9" Border.Lines="All" Fill.Color="LightGray" Text="TOTAL" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      </DataHeaderBand>
+      <Sort>
+        <Sort Expression="[spRptCostos_PrefijoServicioDetalle.Prefijo]"/>
+      </Sort>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="201" Width="980.53" Height="18.9">
+      <TextObject Name="Text13" Left="689.85" Width="56.7" Height="18.9" Border.Lines="Top" Text="[TotalCantidades]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text22" Left="850.5" Width="132.3" Height="18.9" Border.Lines="Top" Text="[Totales]" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="," Format.GroupSeparator="." Format.CurrencySymbol="$" Format.PositivePattern="2" Format.NegativePattern="12" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text23" Left="595.35" Width="94.5" Height="18.9" Border.Lines="Top" Text="TOTALES:" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text66" Left="746.55" Width="103.95" Height="18.9" Border.Lines="Top" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="," Format.GroupSeparator="." Format.CurrencySymbol="$" Format.PositivePattern="2" Format.NegativePattern="12" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+    </ReportSummaryBand>
+    <PageFooterBand Name="PageFooter1" Top="223.9" Width="980.53" Height="18.9">
+      <TextObject Name="Text14" Left="784.35" Width="198.45" Height="18.9" Text="Pag. [Page#] de [TotalPages#]" HorzAlign="Right" Font="Arial, 8pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>
