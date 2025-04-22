@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" UseFileCache="true" ReportInfo.Created="04/21/2025 15:15:52" ReportInfo.Modified="04/22/2025 11:32:38" ReportInfo.CreatorVersion="2025.1.0.0">
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqzyHcyVMn8cXH2DoQvCoQdqUwBNEB09tIwz1qZT0qg+gB8EZIHj0GQU71QQ1RzwgLi4JhIKmIBWsAFwpRCBqGj6uWmizj+29EaP0lM3SXeT91vNfoCQ84CM0IuJkB4yFDCtuUhZ/OK4vw1dPfULIsleMXZx1Fo2mAZy5lW/YbehQTAqnfVOnh87MEOyKC0am3KoXHm5kTaPor0Ove0MRRXb6izmZsZw+KIKkZjBmpuwA=">
+      <TableDataSource Name="Table" Alias="datos" DataType="System.Int32" Enabled="true" SelectCommand="EXEC Sp_Rpt_Costos_y_gastos @periodo= @periodo">
+        <Column Name="periodo" DataType="System.String"/>
+        <Column Name="clase" DataType="System.String"/>
+        <Column Name="cuenta" DataType="System.String"/>
+        <Column Name="nombre_cuenta" DataType="System.String"/>
+        <Column Name="nit" DataType="System.String"/>
+        <Column Name="tercero" DataType="System.String"/>
+        <Column Name="codigo_centro_costo" DataType="System.String"/>
+        <Column Name="centro_costo" DataType="System.String"/>
+        <Column Name="codigo_elemento" DataType="System.String"/>
+        <Column Name="elemento" DataType="System.String"/>
+        <Column Name="codigo_subelemento" DataType="System.String"/>
+        <Column Name="subelemento" DataType="System.String"/>
+        <Column Name="codigo_concepto" DataType="System.String"/>
+        <Column Name="concepto" DataType="System.String"/>
+        <Column Name="fijo_variable" DataType="System.String"/>
+        <Column Name="cod_servicio" DataType="System.String"/>
+        <Column Name="servicio" DataType="System.String"/>
+        <Column Name="detalle" DataType="System.String"/>
+        <Column Name="valor" DataType="System.Decimal"/>
+        <CommandParameter Name="@periodo" DataType="22" Expression="[periodo]" DefaultValue="202101"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="650" PaperHeight="215.9" Guides="-18.9" Watermark.Font="Arial, 60pt">
+    <PageHeaderBand Name="PageHeader1" Width="2381.4" Height="47.25" Guides="28.35,28.35,28.35,28.35,28.35,28.35">
+      <TextObject Name="Header2" Left="70.55" Top="-1.65" Width="61.1" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="CLASE&#13;&#10;" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header3" Left="131.65" Top="-1.65" Width="63.3" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="CUENTA&#13;&#10;" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header4" Left="194.95" Top="-1.65" Width="107.25" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="NOMBRE CUENTA&#13;&#10;" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header5" Left="302.2" Top="-1.65" Width="80" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="NIT&#13;&#10;" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header6" Left="382.2" Top="-1.65" Width="176.7" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="TERCERO&#13;&#10;" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header7" Left="558.9" Top="-1.65" Width="120" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="CODIGO CENTR. COSTO" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header8" Left="678.9" Top="-1.65" Width="127.25" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="CENTR. COSTO" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header10" Left="923.95" Top="-1.65" Width="108.35" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="ELEMENTO&#13;&#10;" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Text11" Left="805.7" Top="-1.65" Width="117.8" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="CODIGO ELEMENTO&#13;&#10;" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Text12" Left="1032" Top="-1.65" Width="117.8" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="CODIGO SUBELEMENTO&#13;&#10;" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Text13" Left="1146.9" Top="-1.65" Width="108.35" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="SUBELEMENTO" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Text14" Left="1254.85" Top="-1.65" Width="117.8" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="CODIGO CONCEPTO&#13;&#10;&#13;&#10;" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Text15" Left="1370.25" Top="-1.65" Width="108.35" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="CONCEPTO&#13;&#10;" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Text16" Left="1479" Top="-1.65" Width="108.35" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="FIJO/VARIABLE" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Text17" Left="1586" Top="-1.65" Width="117.8" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="CODIGO SERVICIO&#13;&#10;&#13;&#10;" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Text18" Left="1703" Top="-1.65" Width="193.4" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="SERVICIO&#13;&#10;" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Text19" Left="1896.05" Top="-1.65" Width="335.15" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="DETALLE" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Text20" Left="2230.2" Top="-1.65" Width="146.15" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="VALOR" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Text40" Top="-1.65" Width="70.55" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="PERIODO" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="49.92" Width="2381.4" Height="28.35" DataSource="Table">
+      <TextObject Name="Text21" Top="9.45" Width="68.62" Height="18.9" Text="[datos.periodo]" Font="Arial, 10pt"/>
+      <TextObject Name="Text22" Left="75.6" Top="9.45" Width="55.15" Height="18.9" Text="[datos.clase]" Font="Arial, 10pt"/>
+      <TextObject Name="Text23" Left="132.3" Top="9.45" Width="61.67" Height="18.9" Text="[datos.cuenta]" Font="Arial, 10pt"/>
+      <TextObject Name="Text24" Left="198.45" Top="9.45" Width="101.64" Height="18.9" Text="[datos.nombre_cuenta]" Font="Arial, 10pt"/>
+      <TextObject Name="Text25" Left="302.4" Top="9.45" Width="78.32" Height="18.9" Text="[datos.nit]" Font="Arial, 10pt"/>
+      <TextObject Name="Text26" Left="384.51" Top="9.45" Width="172.35" Height="18.9" Text="[datos.tercero]" Font="Arial, 10pt"/>
+      <TextObject Name="Text27" Left="560.07" Top="9.45" Width="118.05" Height="18.9" Text="[datos.codigo_centro_costo]" Font="Arial, 10pt"/>
+      <TextObject Name="Text28" Left="680.4" Top="9.45" Width="125" Height="18.9" Text="[datos.centro_costo]" Font="Arial, 10pt"/>
+      <TextObject Name="Text29" Left="807.24" Top="9.45" Width="115.97" Height="18.9" Text="[datos.codigo_elemento]" Font="Arial, 10pt"/>
+      <TextObject Name="Text30" Left="926.1" Top="9.45" Width="106.05" Height="18.9" Text="[datos.elemento]" Font="Arial, 10pt"/>
+      <TextObject Name="Text31" Left="1034.88" Top="9.45" Width="111.3" Height="18.9" Text="[datos.codigo_elemento]" Font="Arial, 10pt"/>
+      <TextObject Name="Text32" Left="1148.91" Top="9.45" Width="106.26" Height="18.9" Text="[datos.subelemento]" Font="Arial, 10pt"/>
+      <TextObject Name="Text33" Left="1256.85" Top="9.45" Width="112.6" Height="18.9" Text="[datos.codigo_concepto]" Font="Arial, 10pt"/>
+      <TextObject Name="Text34" Left="1370.25" Top="9.45" Width="107.31" Height="18.9" Text="[datos.concepto]" Font="Arial, 10pt"/>
+      <TextObject Name="Text35" Left="1480.5" Top="9.45" Width="103.32" Height="18.9" Text="[datos.fijo_variable]" Font="Arial, 10pt"/>
+      <TextObject Name="Text36" Left="1587.6" Top="9.45" Width="111.11" Height="18.9" Text="[datos.cod_servicio]" Font="Arial, 10pt"/>
+      <TextObject Name="Text37" Left="1703.52" Top="9.45" Width="190.25" Height="18.9" Text="[datos.servicio]" Font="Arial, 10pt"/>
+      <TextObject Name="Text38" Left="1899.45" Top="9.45" Width="330.35" Height="18.9" Text="[datos.detalle]" Font="Arial, 10pt"/>
+      <TextObject Name="Text39" Left="2230.2" Top="9.45" Width="144.81" Height="18.9" Text="[datos.valor]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial, 10pt" Trimming="EllipsisCharacter"/>
+    </DataBand>
+  </ReportPage>
+</Report>
