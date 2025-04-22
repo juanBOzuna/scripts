@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" UseFileCache="true" ReportInfo.Created="04/21/2025 15:15:52" ReportInfo.Modified="04/22/2025 09:32:49" ReportInfo.CreatorVersion="2025.1.0.0">
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlquQ+MGUuFmwCkhAb0ntbeLKdG/zZXraY1y6KlrFI20XhiGhW2HnF7EH+9Lp0x59pZOANFyRgRAs8kiH7rQxRZIYDKfT+V9RAN92+WmVT2dJYzrC6bQ+511kNK9MzezsS7bAIWXfvWc7hE1ogotx318B4U3+QZeVJJWqRD9yJCRjs3h4g7sBS/Km/Jp2bDEsowJdRhZSTBU3lE36ioE8cqXJ0q4pamjDSrSycpfwuRNEc=">
+      <TableDataSource Name="Table" Alias="data" DataType="System.Int32" Enabled="true" SelectCommand="EXEC Sp_primer_segundo_nivel @periodo=@periodo">
+        <Column Name="Naturaleza" DataType="System.String"/>
+        <Column Name="codigo" DataType="System.String"/>
+        <Column Name="descripcion" DataType="System.String"/>
+        <Column Name="tipo" DataType="System.Int32"/>
+        <Column Name="costo_directo" DataType="System.Decimal"/>
+        <Column Name="costo_no_operacionales" DataType="System.Decimal"/>
+        <Column Name="gastos_no_operacionales" DataType="System.Decimal"/>
+        <Column Name="logistico" DataType="System.Decimal"/>
+        <Column Name="Administrativo" DataType="System.Decimal"/>
+        <Column Name="ingreso" DataType="System.Decimal"/>
+        <CommandParameter Name="@periodo" DataType="22" Expression="[periodo]"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="370" PaperHeight="215.9" Guides="-18.9" Watermark.Font="Arial, 60pt">
+    <PageHeaderBand Name="PageHeader1" Width="1323" Height="47.25" Guides="28.35,28.35,28.35,28.35,28.35,28.35">
+      <TextObject Name="Header1" Width="98.9" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="NATURALEZA" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header2" Left="98.9" Width="61.1" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="CODIGO" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header3" Left="160" Width="346.8" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="DESCRIPCION" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header4" Left="506.8" Top="-1.65" Width="41.1" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="TIPO" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header5" Left="547.9" Top="-1.65" Width="117.8" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="COSTO DIRECTO" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header6" Left="665.7" Top="-1.65" Width="176.7" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="COSTOS NO OPERACIONALES" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header7" Left="842.4" Top="-1.65" Width="167.25" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="GASTOS NO OPERACIONALES" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header8" Left="1009.65" Top="-1.65" Width="98.9" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="LOGISTICO" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header9" Left="1108.55" Width="98.9" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="ADMINISTRATIVO" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+      <TextObject Name="Header10" Left="1207.45" Top="-1.65" Width="108.35" Height="30" Border.Lines="All" Fill.Color="0, 174, 145" Text="INGRESO" HorzAlign="Center" VertAlign="Center" Font="Cambria, 10pt, style=Bold" TextFill.Color="White"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="49.92" Width="1323" Height="28.35" DataSource="Table">
+      <TextObject Name="Text1" Top="9.45" Width="94.5" Height="18.9" Text="[data.Naturaleza]" Font="Arial, 10pt"/>
+      <TextObject Name="Text2" Left="94.5" Top="9.45" Width="66.15" Height="18.9" Text="[data.codigo]" Font="Arial, 10pt"/>
+      <TextObject Name="Text3" Left="160.65" Top="9.45" Width="349.65" Height="18.9" Text="[data.descripcion]" Font="Arial, 10pt"/>
+      <TextObject Name="Text4" Left="510.3" Top="9.45" Width="37.8" Height="18.9" Text="[data.tipo]" Font="Arial, 10pt"/>
+      <TextObject Name="Text5" Left="548.1" Top="9.45" Width="113.4" Height="18.9" Text="[data.costo_directo]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial, 10pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text6" Left="670.95" Top="9.45" Width="160.65" Height="18.9" Text="[data.costo_no_operacionales]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial, 10pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text7" Left="841.05" Top="9.45" Width="160.65" Height="18.9" Text="[data.gastos_no_operacionales]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial, 10pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text8" Left="1020.6" Top="9.45" Width="75.6" Height="18.9" Text="[data.logistico]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial, 10pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text9" Left="1115.1" Top="9.45" Width="85.05" Height="18.9" Text="[data.Administrativo]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial, 10pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text10" Left="1209.6" Top="9.45" Width="94.5" Height="18.9" Text="[data.ingreso]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial, 10pt" Trimming="EllipsisCharacter"/>
+    </DataBand>
+  </ReportPage>
+</Report>
